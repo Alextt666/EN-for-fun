@@ -6,23 +6,28 @@
     <ul class="mt-8 flex flex-col justify-center items-center">
       <li
         :class="`bg-white m-2 p-2 w-full h-10 rounded-md cursor-pointer hover:scale-110 shadow-md transition-all duration-150 ${
-          activeItem == item ? 'shadow-purple-200' : ''
+          activeItem == index ? 'shadow-purple-200' : ''
         }`"
-        v-for="item in 26"
-        @click="handleActiveTopic(item)"
+        v-for="(item, index) in topics"
+        :key="item"
+        @click="handleActiveTopic(item, index)"
       >
-        Education {{ item }}
+        {{ item }} {{ index }}
       </li>
     </ul>
   </div>
 </template>
 <script setup>
-import { ref } from "vue";
-
-const activeItem = ref(1);
-const handleActiveTopic = (item) => {
-  activeItem.value = item;
+import { ref, defineProps, defineEmits } from "vue";
+const props = defineProps(["topics"]);
+const emits = defineEmits(["subChange"]);
+// 默认主题1
+const activeItem = ref(0);
+// 切换当前主题
+const handleActiveTopic = (item, index) => {
+  activeItem.value = index;
   console.log(item);
+  emits("subChange", item);
 };
 </script>
 <style scoped>

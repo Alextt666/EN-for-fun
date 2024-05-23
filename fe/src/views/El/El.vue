@@ -1,6 +1,6 @@
 <template>
   <div class="flex w-full h-full overflow-hidden max-h-screen">
-    <SubMenu></SubMenu>
+    <SubMenu :topics="topicList" @subChange="handleSubChange"></SubMenu>
     <div class="flex-1 p-10">
       <!-- wrapper -->
       <div class="bg-white w-full h-full rounded-2xl relative">
@@ -9,13 +9,15 @@
         >
           <ModeItem
             v-for="item in modes"
-            :key="item"
-            :mode="item"
+            :key="item.name"
+            :mode="item.name"
             :active-mode="activeMode"
             @click="handleMode(item)"
           ></ModeItem>
         </div>
-        <div>content</div>
+        <div>
+          <component :is="currentMode"></component>
+        </div>
       </div>
     </div>
   </div>
@@ -23,12 +25,40 @@
 <script setup>
 import SubMenu from "@/components/SubMenu.vue";
 import ModeItem from "./ModeItem.vue";
-import { ref } from "vue";
-const modes = ["L", "R", "S"];
+import LMode from "./modes/LMode.vue";
+import RMode from "./modes/RMode.vue";
+import SMode from "./modes/SMode.vue";
+import { ref, shallowRef } from "vue";
+// 默认模式列表
+const modes = [
+  {
+    name: "L",
+    comp: LMode,
+  },
+  {
+    name: "R",
+    comp: RMode,
+  },
+  {
+    name: "S",
+    comp: SMode,
+  },
+];
+// fetch数据填充 副标题区域
+const topicList = ref(["Education 1", "Education 2"]);
+// 当前选择模式
 const activeMode = ref("L");
-const handleMode = (mode) => {
-  activeMode.value = mode;
+// 当前模式对应的组件
+const currentMode = shallowRef(LMode);
+// 模式切换
+const handleMode = ({ name, comp }) => {
+  activeMode.value = name;
+  currentMode.value = comp;
   console.log(mode);
+};
+// 副标题切换
+const handleSubChange = (topic) => {
+  console.log(topic, "change to topic");
 };
 </script>
 <style scoped></style>
