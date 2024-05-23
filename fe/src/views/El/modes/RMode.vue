@@ -1,10 +1,7 @@
 <template>
-  <div class="border-2 w-full h-full overflow-scroll alex-scrollbar" ref="wordContext">
+  <div class="w-full h-full overflow-scroll alex-scrollbar" ref="wordContext">
     <audio class="w-96 h-12" :src="store.currentAudio" controls></audio>
-    <div
-     
-      class="p-4 mt-4 grid grid-cols-2 justify-center items-center"
-    >
+    <div class="p-4 mt-4 grid grid-cols-2 justify-center items-center">
       <div class="flex flex-col">
         <p
           class="h-24 flex justify-center items-center text-xl"
@@ -37,9 +34,9 @@ import { ref } from "vue";
 const wordContext = ref(null); // 内容上下文
 const handleBackTop = () => {
   wordContext.value.scrollTo({
-    top:0,
+    top: 0,
     behavior: "smooth",
-  })
+  });
 };
 </script>
 <style scoped>

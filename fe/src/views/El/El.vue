@@ -15,7 +15,7 @@
             @click="handleMode(item)"
           ></ModeItem>
         </div>
-        <div class=" w-full h-full p-5 pr-2">
+        <div class="w-full h-full p-5 pr-2">
           <transition :enter-active-class="'animate__animated animate__fadeIn'">
             <component :is="currentMode"></component>
           </transition>
@@ -54,9 +54,9 @@ const modes = [
 // fetch数据填充 副标题区域
 const topicList = ref([]);
 // 当前选择模式
-const activeMode = ref("L");
+const activeMode = ref("R");
 // 当前模式对应的组件
-const currentMode = shallowRef(LMode);
+const currentMode = shallowRef(RMode);
 // 当前topic
 const currentTopic = ref(topicList.value[0] || "");
 // 获取数据
