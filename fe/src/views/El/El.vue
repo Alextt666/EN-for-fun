@@ -15,7 +15,7 @@
             @click="handleMode(item)"
           ></ModeItem>
         </div>
-        <div class="border-2 w-full h-full p-5 pr-2">
+        <div class=" w-full h-full p-5 pr-2">
           <transition :enter-active-class="'animate__animated animate__fadeIn'">
             <component :is="currentMode"></component>
           </transition>
@@ -31,6 +31,10 @@ import LMode from "./modes/LMode.vue";
 import RMode from "./modes/RMode.vue";
 import SMode from "./modes/SMode.vue";
 import { ref, shallowRef } from "vue";
+
+import { useLitenStore } from "@/stores/listen.js";
+const store = useLitenStore();
+
 import "animate.css";
 // 默认模式列表
 const modes = [
@@ -48,7 +52,7 @@ const modes = [
   },
 ];
 // fetch数据填充 副标题区域
-const topicList = ref(["Education 1", "Education 2"]);
+const topicList = ref([]);
 // 当前选择模式
 const activeMode = ref("L");
 // 当前模式对应的组件
@@ -59,6 +63,11 @@ const currentTopic = ref(topicList.value[0] || "");
 const fetchListenData = async () => {
   const res = await fetch("/data/words.json").then((res) => res.json());
   topicList.value = res.listen_data?.topics || [];
+  store.updateAudioList(res.listen_data?.audioList);
+  store.updateWordList(res?.listen_data?.wordList);
+  //更新初始值
+  store.updateAudio(0);
+  store.updateCurrentWordList(0);
 };
 fetchListenData();
 // 模式切换
@@ -67,8 +76,9 @@ const handleMode = ({ name, comp }) => {
   currentMode.value = comp;
 };
 // 副标题切换
-const handleSubChange = (topic) => {
-  console.log("topic", topic);
+const handleSubChange = (topic, index) => {
+  store.updateAudio(index);
+  store.updateCurrentWordList(index);
 };
 </script>
 <style scoped></style>

@@ -26,7 +26,7 @@ const activeItem = ref(0);
 // 切换当前主题
 const handleActiveTopic = (item, index) => {
   activeItem.value = index;
-  emits("subChange", item);
+  emits("subChange", item,index);
 };
 </script>
 <style scoped>
