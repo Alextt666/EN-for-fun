@@ -15,8 +15,12 @@
             @click="handleMode(item)"
           ></ModeItem>
         </div>
-        <div>
-          <component :is="currentMode"></component>
+        <div class="border-2 w-full h-full p-5">
+          <transition
+            :enter-active-class="'animate__animated animate__fadeIn'"
+          >
+            <component :is="currentMode"></component>
+          </transition>
         </div>
       </div>
     </div>
@@ -29,6 +33,7 @@ import LMode from "./modes/LMode.vue";
 import RMode from "./modes/RMode.vue";
 import SMode from "./modes/SMode.vue";
 import { ref, shallowRef } from "vue";
+import "animate.css";
 // 默认模式列表
 const modes = [
   {
@@ -54,7 +59,6 @@ const currentMode = shallowRef(LMode);
 const handleMode = ({ name, comp }) => {
   activeMode.value = name;
   currentMode.value = comp;
-  console.log(mode);
 };
 // 副标题切换
 const handleSubChange = (topic) => {
