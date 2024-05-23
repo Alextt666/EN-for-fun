@@ -12,7 +12,7 @@
         :key="item"
         @click="handleActiveTopic(item, index)"
       >
-        {{ item }} {{ index }}
+        {{ item?.length > 20 ? item.slice(0, 20) + "..." : item}}
       </li>
     </ul>
   </div>
@@ -26,7 +26,6 @@ const activeItem = ref(0);
 // 切换当前主题
 const handleActiveTopic = (item, index) => {
   activeItem.value = index;
-  console.log(item);
   emits("subChange", item);
 };
 </script>

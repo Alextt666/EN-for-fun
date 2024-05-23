@@ -31,7 +31,8 @@
   </div>
 </template>
 <script setup>
-import tempAudio from "@/assets/audio/1.mp3"; // 后续改由接口返回
+import tempAudio from "@/assets/audio/part1/1_1_subject.mp3"; // 后续改由接口返回
+
 import { ref } from "vue";
 const wordContext = ref(null); // 内容上下文
 const wordList = ref(100); // 词汇列表 后续由接口返回

@@ -2,7 +2,7 @@
   <div class="flex w-full h-full overflow-hidden max-h-screen">
     <SubMenu :topics="topicList" @subChange="handleSubChange"></SubMenu>
     <div class="flex-1 p-10">
-      <!-- wrapper -->
+      <!-- content-wrapper -->
       <div class="bg-white w-full h-full rounded-2xl relative">
         <div
           class="h-8 flex w-36 justify-evenly items-center absolute top-5 right-5 gap-2"
@@ -15,10 +15,8 @@
             @click="handleMode(item)"
           ></ModeItem>
         </div>
-        <div class="border-2 w-full h-full p-5">
-          <transition
-            :enter-active-class="'animate__animated animate__fadeIn'"
-          >
+        <div class="border-2 w-full h-full p-5 pr-2">
+          <transition :enter-active-class="'animate__animated animate__fadeIn'">
             <component :is="currentMode"></component>
           </transition>
         </div>
@@ -55,6 +53,14 @@ const topicList = ref(["Education 1", "Education 2"]);
 const activeMode = ref("L");
 // 当前模式对应的组件
 const currentMode = shallowRef(LMode);
+// 当前topic
+const currentTopic = ref(topicList.value[0] || "");
+// 获取数据
+const fetchListenData = async () => {
+  const res = await fetch("/data/words.json").then((res) => res.json());
+  topicList.value = res.listen_data?.topics || [];
+};
+fetchListenData();
 // 模式切换
 const handleMode = ({ name, comp }) => {
   activeMode.value = name;
@@ -62,7 +68,7 @@ const handleMode = ({ name, comp }) => {
 };
 // 副标题切换
 const handleSubChange = (topic) => {
-  console.log(topic, "change to topic");
+  console.log("topic", topic);
 };
 </script>
 <style scoped></style>
