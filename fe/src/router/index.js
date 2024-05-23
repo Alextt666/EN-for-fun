@@ -7,11 +7,15 @@ const routes = [
   },
   {
     path: "/el",
-    component: () => import("../views/El.vue"),
+    component: () => import("../views/El/El.vue"),
+    meta: {
+      transition: "animate__animated animate__fadeIn",
+    },
   },
   {
     path: "/update",
     component: () => import("../views/Update.vue"),
+    transition: "animate__animated animate__fadeIn",
   },
 ];
 const router = createRouter({
