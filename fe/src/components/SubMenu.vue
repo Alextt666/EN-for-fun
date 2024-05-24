@@ -12,7 +12,7 @@
         :key="item"
         @click="handleActiveTopic(item, index)"
       >
-        {{ item?.length > 20 ? item.slice(0, 20) + "..." : item}}
+        {{ item?.length > 15 ? item.slice(0, 15) + "..." : item}}
       </li>
     </ul>
   </div>
