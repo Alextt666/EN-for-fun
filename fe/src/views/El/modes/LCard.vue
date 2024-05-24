@@ -5,9 +5,9 @@
       @click="handlePre"
     >
       <div class="font-bold text-xl tracking-wider">
-        {{ props.three[0].en }}
+        {{ props?.three[0]?.en || 'No Data' }}
       </div>
-      <div class="tracking-wider">{{ props.three[0].cn }}</div>
+      <div class="tracking-wider">{{ props?.three[0]?.cn || '暂无数据' }}</div>
     </div>
 
     <div
@@ -34,7 +34,7 @@
               :leave-active-class="'animate__animated animate__fadeOut'"
             >
               <div class="tracking-widest font-bold" v-show="isActive">
-                {{ props.three[1].en }}
+                {{ props?.three[1]?.en || 'No Data'}}
               </div>
             </transition>
           </div>
@@ -49,7 +49,7 @@
               @keyup.enter="handleEnter"
               @keyup.up="toggle"
             />
-            <div class="pt-5 tracking-wider">{{ props.three[1].cn }}</div>
+            <div class="pt-5 tracking-wider">{{ props?.three[1]?.cn || '暂无数据' }}</div>
           </div>
         </div>
       </transition>
@@ -60,9 +60,9 @@
       @click="handleNext"
     >
       <div class="font-bold text-xl tracking-wider">
-        {{ props.three[2].en }}
+        {{ props?.three[2]?.en || 'No Data' }}
       </div>
-      <div class="tracking-wider">{{ props.three[2].cn }}</div>
+      <div class="tracking-wider">{{ props?.three[2]?.cn || 'No Data' }}</div>
     </div>
   </div>
 </template>
