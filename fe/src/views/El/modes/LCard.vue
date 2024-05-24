@@ -17,9 +17,9 @@
         :enter-active-class="'animate__animated animate__fadeInDown'"
         :leave-active-class="'animate__animated animate__fadeOutDown'"
         mode="out-in"
-        
+        :duration="{ enter: 1000, leave: 300 }"
       >
-        <div :key="props.three[1]" class="w-full h-full">
+        <div :key="props.three[1]" class="w-full h-full p-6">
           <!-- 提示区域 -->
           <div class="p-2 m-2 flex items-center">
             <div @click="toggle" class="cursor-pointer mr-8">
