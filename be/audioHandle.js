@@ -1,40 +1,38 @@
 const fs = require("fs");
-const folderPath = "./audio/part1";
+const folderPath = "./part1";
 const fileNames = fs.readdirSync(folderPath); // 所有文件名
 
 
-const newNames = [
-  "1_1 subject.mp3",
-  "1_10 finance.mp3",
-  "1_11 tourism.mp3",
-  "1_12 character.mp3",
-  "1_13 transportation.mp3",
-  "1_14 accommodation_type.mp3",
-  "1_15 furniture_and_facilities.mp3",
-  "1_16 food_and_drink.mp3",
-  "1_17 leisure_and_lifestyle.mp3",
-  "1_18 animals_and_plants.mp3",
-  "1_19 plants.mp3",
-  "1_2 course.mp3",
-  "1_20 company_and_business.mp3",
-  "1_21 crime.mp3",
-  "1_22 medical_scenario.mp3",
-  "1_23 environment.mp3",
-  "1_24 sports.mp3",
-  "1_25 movie.mp3",
-  "1_26 architecture_and_construction.mp3",
-  "1_3 thesis_vocabulary.mp3",
-  "1_4 library_vocabulary.mp3",
-  "1_5 student_types_and_certificate_types.mp3",
-  "1_6 publications.mp3",
-  "1_7 common_words.mp3",
-  "1_8 basic_vocabulary_1.mp3",
-  "1_9 basic_vocabulary_2.mp3",
-];
-
-// fileNames.forEach((item, index) => {
-
-//   fs.renameSync(`./audio/part1/${item}`, `./audio/part1/${item.replace(' ','_')}`);
-// });
+const newName = [
+  '1-10_Finance.mp3',
+  '1-11_Tourism.mp3',
+  '1-12_Figures.mp3',
+  '1-13_Transport.mp3',
+  '1-14_Accommodation_Types.mp3',
+  '1-15_Furniture_and_Facilities.mp3',
+  '1-16_Diet.mp3',
+  '1-17_Leisure_Life.mp3',
+  '1-18_Fauna_and_Flora.mp3',
+  '1-19_Plants.mp3',
+  '1-1_Subject_Names.mp3',
+  '1-20_Companies_and_Enterprises.mp3',
+  '1-21_Crime.mp3',
+  '1-22_Medical_Scenes.mp3',
+  '1-23_Environment.mp3',
+  '1-24_Sports.mp3',
+  '1-25_Movies.mp3',
+  '1-26_Architecture_and_Construction.mp3',
+  '1-2_Courses.mp3',
+  '1-3_Thesis_Vocabulary.mp3',
+  '1-4_Library_Vocabulary.mp3',
+  '1-5_Student_Types_and_Certificate_Types.mp3',
+  '1-6_Publications.mp3',
+  '1-7_Common_Use_Words.mp3',
+  '1-8_Basic_Vocabulary_I.mp3',
+  '1-9_Basic_Vocabulary_II.mp3'
+  ]
+fileNames.forEach((item, index) => {
+  fs.renameSync(`./part1/${item}`, `./part1/${newName[index]}`);
+});
 
 console.log(fileNames);
