@@ -61,7 +61,7 @@ const currentMode = shallowRef(RMode);
 const currentTopic = ref(topicList.value[0] || "");
 // 获取数据
 const fetchListenData = async () => {
-  const res = await import('@/assets/data/wordsarn.json')
+  const res = await import('@/assets/data/words.json')
   topicList.value = res.listen_data?.topics || [];
   store.updateAudioList(res.listen_data?.audioList);
   store.updateWordList(res?.listen_data?.wordList);
