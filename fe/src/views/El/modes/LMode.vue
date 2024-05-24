@@ -2,6 +2,7 @@
   <div class="w-full h-full">
     <AudioComp></AudioComp>
     <LCard :three="three" @pre="handlePre" @next="handleNext"></LCard>
+
   </div>
 </template>
 <script setup>
