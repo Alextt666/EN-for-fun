@@ -1,11 +1,11 @@
 <template>
   <div class="w-full h-full overflow-scroll alex-scrollbar" ref="wordContext">
-    <audio class="w-96 h-12" :src="store.currentAudio" controls></audio>
+    <AudioComp></AudioComp>
     <div class="p-4 mt-4 grid grid-cols-2 justify-center items-center">
       <div class="flex flex-col">
         <p
           class="h-24 flex justify-center items-center text-xl"
-          v-for="item in store.currenWordList"
+          v-for="item in store.currentWordList"
         >
           {{ item.en }}
         </p>
@@ -13,7 +13,7 @@
       <div class="flex flex-col">
         <p
           class="h-24 flex justify-start pl-10 items-center text-xl"
-          v-for="item in store.currenWordList"
+          v-for="item in store.currentWordList"
         >
           {{ item.cn }}
         </p>
@@ -28,8 +28,10 @@
   </div>
 </template>
 <script setup>
+import AudioComp from "./AudioComp.vue";
 import { useLitenStore } from "@/stores/listen.js";
 const store = useLitenStore();
+
 import { ref } from "vue";
 const wordContext = ref(null); // 内容上下文
 const handleBackTop = () => {
