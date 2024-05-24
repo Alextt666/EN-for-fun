@@ -18,7 +18,7 @@
   </div>
 </template>
 <script setup>
-import { ref, defineProps, defineEmits } from "vue";
+import { ref} from "vue";
 const props = defineProps(["topics"]);
 const emits = defineEmits(["subChange"]);
 // 默认主题1
