@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-import { concatUrl } from "@/utils/audioUrl.js";
 export const useLitenStore = defineStore("listen", {
   state: () => ({
     currentAudio: "",
@@ -10,7 +9,7 @@ export const useLitenStore = defineStore("listen", {
   actions: {
     updateAudio(index) {
       const baseAudioURL = this.audioList[index];
-      this.currentAudio = concatUrl(baseAudioURL);
+      this.currentAudio = baseAudioURL;
     },
     updateAudioList(list) {
       this.audioList.length = 0;

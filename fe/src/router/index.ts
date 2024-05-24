@@ -1,12 +1,8 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 
 const routes = [
   {
     path: "/",
-    redirect: "/el",
-  },
-  {
-    path: "/el",
     component: () => import("../views/El/El.vue"),
     meta: {
       transition: "animate__animated animate__fadeIn",
@@ -19,7 +15,7 @@ const routes = [
   },
 ];
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes, // short for `routes: routes`
 });
 
