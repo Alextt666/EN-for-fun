@@ -1,10 +1,10 @@
 <template>
-  <div class="w-full h-full">
+  <div class="w-full h-full" @keyup.down="handleRandom">
     <AudioComp></AudioComp>
     <LCard :three="three" @pre="handlePre" @next="handleNext"></LCard>
     <Tips @click="handleTips" v-show="tips">
       <div class="w-full text-center text-gray-600 italic text-sm mt-5">
-        Tips💡: ⬆ 打开提示 Enter 确认答题 轻点关闭提示
+        Tips💡: ⬆ 打开提示 Enter 确认答题 ⬇洗牌乱序 轻点关闭提示
       </div>
     </Tips>
   </div>
@@ -13,18 +13,18 @@
 import LCard from "./LCard.vue";
 import AudioComp from "./AudioComp.vue";
 import { useLitenStore } from "@/stores/listen.js";
-import { reactive, ref, computed } from "vue";
+import { reactive, ref, computed, toRef, toRaw } from "vue";
 import Tips from "@/components/Tips.vue";
 const store = useLitenStore();
 const point = ref(0);
-const totalList = store.currentWordList;
+const totalList = toRef(store.currentWordList);
 const tips = ref(!(sessionStorage.getItem("tips") === "false") ?? true);
 // 初始化
 const three = computed(() => {
   return [
-    ...totalList.slice(point.value - 1),
-    ...totalList.slice(point.value),
-    ...totalList.slice(point.value + 1),
+    ...totalList.value.slice(point.value - 1),
+    ...totalList.value.slice(point.value),
+    ...totalList.value.slice(point.value + 1),
   ];
 });
 
@@ -39,6 +39,21 @@ const handleNext = () => {
 const handleTips = () => {
   tips.value = false;
   sessionStorage.setItem("tips", false);
+};
+
+// shuffle
+const handleRandom = (e) => {
+  function shuffleArray(arr) {
+    const array = Array.from(arr);
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  totalList.value = shuffleArray(toRaw(totalList.value));
+  console.log(totalList.value,'totalList');
 };
 </script>
 <style></style>
