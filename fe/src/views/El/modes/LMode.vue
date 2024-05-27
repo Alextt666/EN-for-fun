@@ -2,15 +2,14 @@
   <div class="w-full h-full" @keyup.down="handleRandom" @keyup="handlePause">
     <AudioComp :isPlay="isPlay"></AudioComp>
     <div>
-      <div class="font-bold text-sm tracking-wider pl-4">
+      <div class="font-bold text-sm tracking-widest pl-4">
         <span >To:</span>
         <span class="tracking-wide text-xs">
-          {{ totalList.length || "" }} /
+          {{ totalList.length || "" }}  /
         </span>
         <input
-          class="text-xs"
+          class="text-xs w-12 h-6 outline-none indent-1"
           type="number"
-          style="outline: none; width: 30px; border-radius: 5px"
           v-model="point"
         />
       </div>
