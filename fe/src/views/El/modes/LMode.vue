@@ -10,7 +10,7 @@
         <input
           class="text-xs w-12 h-6 outline-none indent-1"
           type="number"
-          v-model="point"
+          @blur="handleJumpTo"
         />
       </div>
     </div>
@@ -79,5 +79,9 @@ const handlePause = (e) => {
     isPlay.value = true;
   }
 };
+// 跳转事件
+const handleJumpTo = (e)=>{
+  point.value = e.target.value;
+}
 </script>
 <style></style>
