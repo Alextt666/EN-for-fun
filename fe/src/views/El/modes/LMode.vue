@@ -46,6 +46,9 @@ const handlePre = () => {
   point.value--;
 };
 const handleNext = () => {
+  if(point.value + 1 > totalList.value.length){
+    point.value = -1;
+  }
   point.value++;
 };
 
