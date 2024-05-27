@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full h-full" @keyup.down="handleRandom">
-    <AudioComp></AudioComp>
+  <div class="w-full h-full" @keyup.down="handleRandom" @keyup="handlePause">
+    <AudioComp :isPlay="isPlay"></AudioComp>
     <LCard :three="three" @pre="handlePre" @next="handleNext"></LCard>
     <Tips @click="handleTips" v-show="tips">
       <div class="w-full text-center text-gray-600 italic text-sm mt-5">
@@ -17,6 +17,7 @@ import { reactive, ref, computed, toRef, toRaw } from "vue";
 import Tips from "@/components/Tips.vue";
 const store = useLitenStore();
 const point = ref(0);
+const isPlay = ref(false);
 const totalList = toRef(store.currentWordList);
 const tips = ref(!(sessionStorage.getItem("tips") === "false") ?? true);
 // 初始化
@@ -53,7 +54,17 @@ const handleRandom = (e) => {
   }
 
   totalList.value = shuffleArray(toRaw(totalList.value));
-  console.log(totalList.value,'totalList');
+  console.log(totalList.value, "totalList");
+};
+
+// handlePause
+const handlePause = (e) => {
+  if (e.keyCode === 37) {
+    isPlay.value = false;
+  }
+  if (e.keyCode === 39) {
+    isPlay.value = true;
+  }
 };
 </script>
 <style></style>
