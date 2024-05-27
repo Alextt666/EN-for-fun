@@ -5,14 +5,14 @@
     <div class="font-bold lg:text-md xl:text-xl">⭐Topic🚀</div>
     <ul class="mt-8 flex flex-col justify-center items-center">
       <li
-        :class="`bg-white m-2 p-2 w-full h-10 rounded-md cursor-pointer hover:scale-110 shadow-md transition-all duration-150 ${
+        :class="`bg-white m-2 p-2 lg:text-sm xl:text-md w-full h-10 rounded-md cursor-pointer hover:scale-110 shadow-md transition-all duration-150 ${
           activeItem == index ? 'shadow-purple-200' : ''
         }`"
         v-for="(item, index) in topics"
         :key="item"
         @click="handleActiveTopic(item, index)"
       >
-        {{ item?.length > 15 ? item.slice(0, 15) + "..." : item}}
+        {{ item?.length > 15 ? item.slice(0, 10) + "..." : item}}
       </li>
     </ul>
   </div>

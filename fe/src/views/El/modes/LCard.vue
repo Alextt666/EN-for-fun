@@ -1,17 +1,17 @@
 <template>
-  <div class="w-full h-3/4 flex justify-center items-center relative">
+  <div class="w-full h-3/4 flex justify-center items-center">
     <div
-      class="w-1/5 h-56 shadow-xl rounded-md absolute -translate-x-96 translate-y-8 bg-gray-50 z-10 flex flex-col justify-center items-center gap-4 cursor-pointer"
+      class="lg:w-1/3 xl:w-1/5 h-56 shadow-xl rounded-md translate-y-8 bg-gray-50 z-10 flex flex-col justify-center items-center gap-4 cursor-pointer"
       @click="handlePre"
     >
       <div class="font-bold text-xl tracking-wider">
-        {{ props?.three[0]?.en || 'No Data' }}
+        {{ props?.three[0]?.en || "No Data" }}
       </div>
-      <div class="tracking-wider">{{ props?.three[0]?.cn || '暂无数据' }}</div>
+      <div class="tracking-wider">{{ props?.three[0]?.cn || "暂无数据" }}</div>
     </div>
 
     <div
-      class="w-2/5 h-80 shadow-xl rounded-lg absolute bg-gray-50 z-30 flex justify-center items-center overflow-hidden"
+      class="lg:w-3/5 xl:w-2/5 h-80 shadow-xl rounded-lg bg-gray-50 z-30 flex justify-center items-center overflow-hidden"
     >
       <transition
         :enter-active-class="'animate__animated animate__fadeInDown'"
@@ -34,7 +34,7 @@
               :leave-active-class="'animate__animated animate__fadeOut'"
             >
               <div class="tracking-widest font-bold" v-show="isActive">
-                {{ props?.three[1]?.en || 'No Data'}}
+                {{ props?.three[1]?.en || "No Data" }}
               </div>
             </transition>
           </div>
@@ -49,20 +49,22 @@
               @keyup.enter="handleEnter"
               @keyup.up="toggle"
             />
-            <div class="pt-5 tracking-wider">{{ props?.three[1]?.cn || '暂无数据' }}</div>
+            <div class="pt-5 tracking-wider">
+              {{ props?.three[1]?.cn || "暂无数据" }}
+            </div>
           </div>
         </div>
       </transition>
     </div>
 
     <div
-      class="w-1/5 h-56 shadow-xl rounded-md absolute translate-x-96 translate-y-8 bg-gray-50 z-10 flex flex-col justify-center items-center gap-4 cursor-pointer"
+      class="lg:w-1/3 xl:w-1/5 h-56 shadow-xl rounded-md translate-y-8 bg-gray-50 z-10 flex flex-col justify-center items-center gap-4 cursor-pointer"
       @click="handleNext"
     >
       <div class="font-bold text-xl tracking-wider">
-        {{ props?.three[2]?.en || 'No Data' }}
+        {{ props?.three[2]?.en || "No Data" }}
       </div>
-      <div class="tracking-wider">{{ props?.three[2]?.cn || 'No Data' }}</div>
+      <div class="tracking-wider">{{ props?.three[2]?.cn || "No Data" }}</div>
     </div>
   </div>
 </template>
