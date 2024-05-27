@@ -1,6 +1,20 @@
 <template>
   <div class="w-full h-full" @keyup.down="handleRandom" @keyup="handlePause">
     <AudioComp :isPlay="isPlay"></AudioComp>
+    <div>
+      <div class="font-bold text-sm tracking-wider pl-4">
+        <span >To:</span>
+        <span class="tracking-wide text-xs">
+          {{ totalList.length || "" }} /
+        </span>
+        <input
+          class="text-xs"
+          type="number"
+          style="outline: none; width: 30px; border-radius: 5px"
+          v-model="point"
+        />
+      </div>
+    </div>
     <LCard :three="three" @pre="handlePre" @next="handleNext"></LCard>
     <Tips @click="handleTips" v-show="tips">
       <div class="w-full text-center text-gray-600 italic text-sm mt-5">
