@@ -1,7 +1,10 @@
 <template>
-  <div class="w-full h-full overflow-scroll alex-scrollbar" ref="wordContext">
+  <div class="w-full h-full overflow-hidden">
     <AudioComp></AudioComp>
-    <div class="p-4 mt-4 grid grid-cols-2 justify-center items-center">
+    <div
+      ref="wordContext"
+      class="w-full h-5/6 overflow-scroll mt-4 grid grid-cols-2 justify-center items-center alex-scrollbar"
+    >
       <div class="flex flex-col">
         <p
           class="h-24 flex justify-center items-center text-xl"
