@@ -8,17 +8,19 @@
       <div class="flex flex-col">
         <p
           class="h-24 flex justify-center items-center text-xl"
-          v-for="item in store.currentWordList"
+          v-for="(item,index) in store.currentWordList"
+          :key="index"
+          v-lazy="item.en"
         >
-          {{ item.en }}
         </p>
       </div>
       <div class="flex flex-col">
         <p
           class="h-24 flex justify-start pl-10 items-center text-xl"
-          v-for="item in store.currentWordList"
+          v-for="(item,index) in store.currentWordList"
+          :key="index"
+          v-lazy="item.cn"
         >
-          {{ item.cn }}
         </p>
       </div>
     </div>
@@ -42,6 +44,17 @@ const handleBackTop = () => {
     top: 0,
     behavior: "smooth",
   });
+};
+
+// lazy
+const vLazy = async (el, binding) => {
+  const observer = new IntersectionObserver((entry) => {
+    if (entry[0].intersectionRatio > 0) {
+      el.innerText = binding.value;
+      observer.unobserve(el);
+    }
+  });
+  observer.observe(el);
 };
 </script>
 <style scoped>
