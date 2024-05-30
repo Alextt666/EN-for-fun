@@ -107,8 +107,8 @@ const reset = () => {
 
 // 确认输入
 const handleEnter = () => {
-  const origin = props.three[1].en.trim();
-  const value = inputValue.value.trim();
+  const origin = props.three[1].en.trim().toLowerCase();
+  const value = inputValue.value.trim().toLowerCase();
   if (value === origin) {
     handleNext();
   } else {
